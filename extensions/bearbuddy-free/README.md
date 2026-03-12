@@ -52,7 +52,7 @@ Initial release of BearBuddy Free
 
 ## Contributing
 
-Contributions are welcome! Please see our [Contributing Guide](../CONTRIBUTING.md).
+Contributions are welcome! Please see our [Contributing Guide](../../docs/CONTRIBUTING.md).
 
 ## License
 

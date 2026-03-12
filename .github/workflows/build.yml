@@ -4,11 +4,13 @@ on:
   push:
     branches: [ main ]
     paths:
-      - 'BearBuddy/**'
+      - 'extensions/bearbuddy-free/**'
+      - 'extensions/bearbuddy-pro/**'
   pull_request:
     branches: [ main ]
     paths:
-      - 'BearBuddy/**'
+      - 'extensions/bearbuddy-free/**'
+      - 'extensions/bearbuddy-pro/**'
 
 permissions:
   contents: read
@@ -29,26 +31,40 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-        cache-dependency-path: './BearBuddy/package-lock.json'
+        cache-dependency-path: |
+          ./extensions/bearbuddy-free/package-lock.json
+          ./extensions/bearbuddy-pro/package-lock.json
     
-    - name: Install dependencies
-      working-directory: ./BearBuddy
-      run: npm ci
+    - name: Install dependencies (Free)
+      working-directory: ./extensions/bearbuddy-free
+      run: npm install
+    
+    - name: Install dependencies (Pro)
+      working-directory: ./extensions/bearbuddy-pro
+      run: npm install
     
     - name: Build BearBuddy Free
-      working-directory: ./BearBuddy
-      run: npm run build:free
+      working-directory: ./extensions/bearbuddy-free
+      run: npm run build
     
     - name: Build BearBuddy Pro
-      working-directory: ./BearBuddy
-      run: npm run build:pro
+      working-directory: ./extensions/bearbuddy-pro
+      run: npm run build
     
-    - name: Run tests
-      working-directory: ./BearBuddy
+    - name: Run tests (Free)
+      working-directory: ./extensions/bearbuddy-free
       run: npm test
     
-    - name: Package extensions
-      working-directory: ./BearBuddy
+    - name: Run tests (Pro)
+      working-directory: ./extensions/bearbuddy-pro
+      run: npm test
+    
+    - name: Package BearBuddy Free
+      working-directory: ./extensions/bearbuddy-free
+      run: npm run package
+    
+    - name: Package BearBuddy Pro
+      working-directory: ./extensions/bearbuddy-pro
       run: npm run package
       
     - name: Upload BearBuddy Free artifact
@@ -56,11 +72,11 @@ jobs:
       if: matrix.os == 'ubuntu-latest' && matrix.node-version == '20.x'
       with:
         name: bearbuddy-free-vsix
-        path: BearBuddy/BearBuddy-Free/*.vsix
+        path: extensions/bearbuddy-free/*.vsix
         
     - name: Upload BearBuddy Pro artifact
       uses: actions/upload-artifact@v4
       if: matrix.os == 'ubuntu-latest' && matrix.node-version == '20.x'
       with:
         name: bearbuddy-pro-vsix
-        path: BearBuddy/BearBuddy-Pro/*.vsix
+        path: extensions/bearbuddy-pro/*.vsix

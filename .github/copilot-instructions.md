@@ -4,38 +4,41 @@
 
 This is a monorepo for development of applications and extensions. It currently contains:
 
-- **BearBuddy**: A VSCode extension project with Free (MIT) and Pro (Proprietary) editions
+- **BearBuddy Free**: A VSCode extension - Free (MIT) edition
+- **BearBuddy Pro**: A VSCode extension - Pro (Proprietary) edition
 
 ## Repository Structure
 
 ```
 /
-├── BearBuddy/                      # VSCode extension monorepo
-│   ├── BearBuddy-Free/             # Free edition (MIT License)
-│   │   ├── src/                    # TypeScript source files
-│   │   │   └── extension.ts        # Main extension entry point
-│   │   ├── package.json            # Extension manifest & dependencies
-│   │   ├── tsconfig.json           # TypeScript configuration
-│   │   └── esbuild.js              # Build configuration
-│   ├── BearBuddy-Pro/              # Pro edition (Proprietary License)
-│   │   ├── src/                    # TypeScript source files
-│   │   │   └── extension.ts        # Main extension entry point
-│   │   ├── package.json            # Extension manifest & dependencies
-│   │   ├── tsconfig.json           # TypeScript configuration
-│   │   └── esbuild.js              # Build configuration
-│   ├── docs/                       # GitHub Pages documentation
-│   └── package.json                # Monorepo root configuration
-├── .github/                        # GitHub configuration
-│   ├── workflows/                  # GitHub Actions workflows
-│   ├── ISSUE_TEMPLATE/             # Issue templates
-│   └── pull_request_template.md    # PR template
-└── README.md                       # Repository documentation
+├── extensions/                         # VSCode extensions workspace
+│   ├── bearbuddy-free/                 # BearBuddy Free edition (MIT License)
+│   │   ├── src/                        # TypeScript source files
+│   │   │   └── extension.ts            # Main extension entry point
+│   │   ├── package.json                # Extension manifest & dependencies
+│   │   ├── tsconfig.json               # TypeScript configuration
+│   │   └── esbuild.js                  # Build configuration
+│   ├── bearbuddy-pro/                  # BearBuddy Pro edition (Proprietary License)
+│   │   ├── src/                        # TypeScript source files
+│   │   │   └── extension.ts            # Main extension entry point
+│   │   ├── package.json                # Extension manifest & dependencies
+│   │   ├── tsconfig.json               # TypeScript configuration
+│   │   └── esbuild.js                  # Build configuration
+│   ├── core-extension/                 # Core extension package
+│   └── pro-extension/                  # Pro extension package
+├── docs/
+│   └── bearbuddy/                      # BearBuddy GitHub Pages documentation
+├── .github/                            # GitHub configuration
+│   ├── workflows/                      # GitHub Actions workflows
+│   ├── ISSUE_TEMPLATE/                 # Issue templates
+│   └── pull_request_template.md        # PR template
+└── README.md                           # Repository documentation
 ```
 
 ## Technologies & Tools
 
 - **Language**: TypeScript
-- **Package Manager**: npm with workspaces
+- **Package Manager**: npm (per extension), pnpm (monorepo root)
 - **Build Tool**: esbuild for fast bundling
 - **Platform**: VSCode Extension API (^1.80.0)
 - **Node Version**: >= 18.0.0
@@ -46,42 +49,49 @@ This is a monorepo for development of applications and extensions. It currently 
 ### Setup & Installation
 
 ```bash
-# Install dependencies for all projects
-cd BearBuddy
+# Install dependencies for BearBuddy Free
+cd extensions/bearbuddy-free
+npm install
+
+# Install dependencies for BearBuddy Pro
+cd extensions/bearbuddy-pro
 npm install
 ```
 
 ### Building
 
 ```bash
-# Build all projects from BearBuddy directory
+# Build BearBuddy Free
+cd extensions/bearbuddy-free
 npm run build
 
-# Build specific edition
-npm run build:free
-npm run build:pro
+# Build BearBuddy Pro
+cd extensions/bearbuddy-pro
+npm run build
 ```
 
 ### Development (Watch Mode)
 
 ```bash
-# Watch all projects
+# Watch BearBuddy Free
+cd extensions/bearbuddy-free
 npm run watch
 
-# Watch specific edition
-npm run watch:free
-npm run watch:pro
+# Watch BearBuddy Pro
+cd extensions/bearbuddy-pro
+npm run watch
 ```
 
 ### Packaging
 
 ```bash
-# Package all extensions
+# Package BearBuddy Free
+cd extensions/bearbuddy-free
 npm run package
 
-# Package specific edition
-npm run package:free
-npm run package:pro
+# Package BearBuddy Pro
+cd extensions/bearbuddy-pro
+npm run package
 ```
 
 ### Testing
@@ -127,23 +137,23 @@ chore: maintenance tasks
 ### BearBuddy Free
 
 - **License**: MIT (Open Source)
-- **Location**: `BearBuddy/BearBuddy-Free/`
+- **Location**: `extensions/bearbuddy-free/`
 - **Contributions**: Accepted for core features
 
 ### BearBuddy Pro
 
 - **License**: Proprietary
-- **Location**: `BearBuddy/BearBuddy-Pro/`
+- **Location**: `extensions/bearbuddy-pro/`
 - **Contributions**: Limited to bug fixes and optimizations
 
 **Important**: When making changes, be mindful of which edition you're working in and respect the license boundaries.
 
-## Working with the Monorepo
+## Working with the Extensions
 
-- This repository uses npm workspaces for managing multiple packages
-- Always run commands from the appropriate directory:
-  - Monorepo-level commands: from `BearBuddy/` directory
-  - Edition-specific work: from `BearBuddy/BearBuddy-Free/` or `BearBuddy/BearBuddy-Pro/`
+- Each BearBuddy edition is an independent package in the `extensions/` workspace directory
+- Always run commands from the appropriate extension directory:
+  - BearBuddy Free: `extensions/bearbuddy-free/`
+  - BearBuddy Pro: `extensions/bearbuddy-pro/`
 - Changes to one edition should not affect the other unless explicitly intended
 
 ## Testing VSCode Extensions
@@ -163,7 +173,7 @@ chore: maintenance tasks
 
 ## Documentation
 
-- Main docs are in the `BearBuddy/docs/` directory
+- BearBuddy docs are in the `docs/bearbuddy/` directory
 - Documentation is published to GitHub Pages
 - Keep README files up to date when making significant changes
 

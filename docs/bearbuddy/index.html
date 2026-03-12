@@ -189,7 +189,7 @@
                             <li>Regular updates</li>
                             <li>Open source</li>
                         </ul>
-                        <a href="https://github.com/PCWProps/extensions-dev/tree/main/BearBuddy/BearBuddy-Free" class="btn">View on GitHub</a>
+                        <a href="https://github.com/PCWProps/extensions-dev/tree/main/extensions/bearbuddy-free" class="btn">View on GitHub</a>
                     </div>
                     
                     <div class="edition-card pro">
@@ -202,7 +202,7 @@
                             <li>Priority support</li>
                             <li>Early access to features</li>
                         </ul>
-                        <a href="https://github.com/PCWProps/extensions-dev/tree/main/BearBuddy/BearBuddy-Pro" class="btn">Learn More</a>
+                        <a href="https://github.com/PCWProps/extensions-dev/tree/main/extensions/bearbuddy-pro" class="btn">Learn More</a>
                     </div>
                 </div>
             </div>
@@ -212,18 +212,18 @@
                 <p>Install BearBuddy from the VSCode Marketplace (coming soon) or build from source:</p>
                 <pre style="background: #f8f9fa; padding: 20px; border-radius: 5px; overflow-x: auto;"><code># Clone the repository
 git clone https://github.com/PCWProps/extensions-dev.git
-cd extensions-dev/BearBuddy
 
-# Install dependencies
+# Build BearBuddy Free
+cd extensions-dev/extensions/bearbuddy-free
 npm install
+npm run build
+npm run package
 
-# Build the extension
-npm run build:free  # For Free edition
-npm run build:pro   # For Pro edition
-
-# Package for installation
-npm run package:free
-npm run package:pro</code></pre>
+# Build BearBuddy Pro
+cd ../bearbuddy-pro
+npm install
+npm run build
+npm run package</code></pre>
             </div>
             
             <div class="section">
@@ -233,7 +233,7 @@ npm run package:pro</code></pre>
                     <a href="https://github.com/PCWProps/extensions-dev/issues" class="btn">Report Issues</a>
                     <a href="https://github.com/PCWProps/extensions-dev/discussions" class="btn">Discussions</a>
                     <a href="https://github.com/sponsors/PCWProps" class="btn">Sponsor</a>
-                    <a href="https://github.com/PCWProps/extensions-dev/blob/main/BearBuddy/CONTRIBUTING.md" class="btn secondary">Contribute</a>
+                    <a href="https://github.com/PCWProps/extensions-dev/blob/main/docs/CONTRIBUTING.md" class="btn secondary">Contribute</a>
                 </div>
             </div>
         </div>
@@ -246,7 +246,7 @@ npm run package:pro</code></pre>
                 <a href="https://github.com/PCWProps/extensions-dev">GitHub</a> |
                 <a href="https://github.com/PCWProps/extensions-dev/issues">Issues</a> |
                 <a href="https://github.com/PCWProps/extensions-dev/discussions">Discussions</a> |
-                <a href="https://github.com/PCWProps/extensions-dev/blob/main/BearBuddy/CONTRIBUTING.md">Contributing</a>
+                <a href="https://github.com/PCWProps/extensions-dev/blob/main/docs/CONTRIBUTING.md">Contributing</a>
             </p>
         </div>
     </footer>
