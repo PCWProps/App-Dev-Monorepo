@@ -1,10 +1,10 @@
 {
-  "name": "bearbuddy-free",
-  "displayName": "BearBuddy Free",
-  "description": "Your friendly coding companion for VSCode - Free Edition",
+  "name": "bearbuddy-pro",
+  "displayName": "BearBuddy Pro",
+  "description": "Your friendly coding companion for VSCode - Professional Edition with advanced features",
   "version": "0.1.0",
   "publisher": "PCWProps",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE",
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -18,8 +18,12 @@
   "contributes": {
     "commands": [
       {
-        "command": "bearbuddy-free.helloWorld",
-        "title": "BearBuddy: Hello World"
+        "command": "bearbuddy-pro.helloWorld",
+        "title": "BearBuddy Pro: Hello World"
+      },
+      {
+        "command": "bearbuddy-pro.advancedFeature",
+        "title": "BearBuddy Pro: Advanced Feature"
       }
     ]
   },
@@ -40,7 +44,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/PCWProps/extensions-dev.git",
-    "directory": "BearBuddy/BearBuddy-Free"
+    "directory": "extensions/bearbuddy-pro"
   },
   "bugs": {
     "url": "https://github.com/PCWProps/extensions-dev/issues"
